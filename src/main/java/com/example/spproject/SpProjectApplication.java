@@ -9,5 +9,5 @@ public class SpProjectApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpProjectApplication.class, args);
     }
-    int ceva;
+
 }

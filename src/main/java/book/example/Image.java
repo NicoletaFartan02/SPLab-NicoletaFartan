@@ -1,15 +1,26 @@
 package book.example;
 
-public class Image implements Element{
+import lombok.Getter;
 
+import java.awt.*;
+import java.util.concurrent.TimeUnit;
+
+public class Image implements Element,Picture{
+
+    @Getter
     private String imageName;
+    private String url;
+    private PictureContent content;
 
-    public Image(String imageName) {
+    public Image(String imageName)
+    {
         this.imageName = imageName;
-    }
+        try {
 
-    public String getImageName() {
-        return imageName;
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void print() {
@@ -29,5 +40,20 @@ public class Image implements Element{
     @Override
     public int get(Element element) {
         return -1;
+    }
+
+    @Override
+    public String url() {
+        return null;
+    }
+
+    @Override
+    public Dimension dim() {
+        return null;
+    }
+
+    @Override
+    public PictureContent content() {
+        return null;
     }
 }

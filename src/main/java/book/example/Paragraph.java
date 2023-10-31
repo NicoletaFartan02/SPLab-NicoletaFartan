@@ -1,16 +1,17 @@
 package book.example;
 
+import lombok.Getter;
+
 public class Paragraph implements Element{
 
+    @Getter
     private String text;
+    private AlignStrategy alignment;
 
     public Paragraph(String text) {
         this.text = text;
     }
 
-    public String getText() {
-        return text;
-    }
     public void print() {
         System.out.println("Paragraph: " + text);
     }
@@ -29,4 +30,15 @@ public class Paragraph implements Element{
 
         return -1;
     }
+    public void setAlignStrategy(AlignStrategy alignment) {
+        this.alignment = alignment;
+    }
+
+    public void render(Paragraph paragraph, Context context) {
+        alignment.render(paragraph, context);
+
+    }
+
+
+
 }

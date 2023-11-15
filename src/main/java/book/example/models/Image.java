@@ -1,11 +1,11 @@
-package book.example;
+package book.example.models;
 
 import lombok.Getter;
 
 import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
-public class Image implements Element,Picture{
+public class Image implements Element, Picture, Visitee {
 
     @Getter
     private String imageName;
@@ -55,5 +55,10 @@ public class Image implements Element,Picture{
     @Override
     public PictureContent content() {
         return null;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitImage(this);
     }
 }

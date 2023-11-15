@@ -1,9 +1,14 @@
-package book.example;
+package book.example.models;
+
+import book.example.models.Book;
+import book.example.models.Element;
+import lombok.Getter;
 
 import java.util.ArrayList;
 
-public class Section implements Element{
+public class Section implements Element,Visitee {
 
+    @Getter
     private  String title;
     private ArrayList<Element> elements;
 
@@ -42,5 +47,14 @@ public class Section implements Element{
     @Override
     public int get(Element element) {
         return elements.indexOf(element);
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitSection(this);
+    }
+
+    public Element[] getElements() {
+        return elements.toArray(new Element[0]);
     }
 }

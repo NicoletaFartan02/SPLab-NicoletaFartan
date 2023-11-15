@@ -1,5 +1,8 @@
-package book.example;
+package book.example.models;
 
+import book.example.models.Image;
+import book.example.models.Paragraph;
+import book.example.models.Table;
 import lombok.Getter;
 
 import java.util.ArrayList;

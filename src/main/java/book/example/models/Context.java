@@ -1,4 +1,4 @@
-package book.example;
+package book.example.models;
 
 public class Context {
     private int lineWidth;

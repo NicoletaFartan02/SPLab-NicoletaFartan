@@ -1,10 +1,10 @@
-package book.example;
+package book.example.models;
 
 import lombok.Getter;
 
 import java.util.ArrayList;
 
-public class Book extends Section {
+public class Book extends Section implements Visitee {
     private static String titlu;
     private TableOfContents tableOfContents;
 
@@ -65,7 +65,14 @@ public class Book extends Section {
     }
 
 
+
+
     public void addContent(Element element) {
         add(element);
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitBook(this);
     }
 }

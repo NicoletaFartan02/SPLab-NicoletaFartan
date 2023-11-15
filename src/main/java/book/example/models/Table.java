@@ -1,6 +1,8 @@
-package book.example;
+package book.example.models;
 
-public class Table implements Element{
+import book.example.models.Element;
+
+public class Table implements Element {
 
     private String title;
 
@@ -28,5 +30,10 @@ public class Table implements Element{
     @Override
     public int get(Element element) {
         return -1;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+
     }
 }

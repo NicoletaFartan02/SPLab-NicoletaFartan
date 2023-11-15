@@ -1,8 +1,9 @@
-package book.example;
+package book.example.models;
 
+import book.example.services.AlignStrategy;
 import lombok.Getter;
 
-public class Paragraph implements Element{
+public class Paragraph implements Element,Visitee {
 
     @Getter
     private String text;
@@ -40,5 +41,8 @@ public class Paragraph implements Element{
     }
 
 
-
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitParagraph(this);
+    }
 }

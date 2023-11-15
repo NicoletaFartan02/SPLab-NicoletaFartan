@@ -1,6 +1,10 @@
-package book.example;
+package book.example.services;
 
-public class AlignRight implements AlignStrategy{
+import book.example.services.AlignStrategy;
+import book.example.models.Context;
+import book.example.models.Paragraph;
+
+public class AlignCenter implements AlignStrategy {
 
     @Override
     public void render(Paragraph paragraph, Context context) {
@@ -9,9 +13,9 @@ public class AlignRight implements AlignStrategy{
         for (int i = 0; i < textLength; i += lineWidth) {
             int endIndex = Math.min(i + lineWidth, textLength);
             String line = paragraph.getText().substring(i, endIndex);
-            int paddingLength = lineWidth - line.length();
+            int paddingLength = (lineWidth - line.length()) / 2;
             String padding = " ".repeat(paddingLength);
-            String formattedLine = padding + line;
+            String formattedLine = padding + line + padding;
             System.out.println(formattedLine);
         }
     }

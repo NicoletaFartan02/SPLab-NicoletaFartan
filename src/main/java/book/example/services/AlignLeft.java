@@ -1,6 +1,10 @@
-package book.example;
+package book.example.services;
 
-public class AlignLeft implements AlignStrategy{
+import book.example.services.AlignStrategy;
+import book.example.models.Context;
+import book.example.models.Paragraph;
+
+public class AlignLeft implements AlignStrategy {
 
     public void render(Paragraph paragraph, Context context) {
         int lineWidth = context.getLineWidth();

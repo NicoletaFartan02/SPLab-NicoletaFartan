@@ -1,6 +1,8 @@
-package book.example;
+package book.example.models;
 
-public class TableOfContents implements Element{
+import book.example.models.Element;
+
+public class TableOfContents implements Element, Visitee {
     public void print() {
         System.out.println("Table of Contents:");
     }
@@ -18,6 +20,11 @@ public class TableOfContents implements Element{
     public int get(Element element) {
 
         return -1;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitTableOfContents(this);
     }
 }
 

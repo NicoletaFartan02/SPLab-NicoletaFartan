@@ -1,12 +1,12 @@
-package book.example;
+package book.example.models;
 
 import java.awt.*;
 
-public class ImageProxy implements Element,Picture{
+public class ImageProxy implements Element, Picture, Visitee {
 
     private String url;
     private Dimension dim;
-    private Image realImage = null;
+    private book.example.models.Image realImage = null;
     public ImageProxy(String url) {
         this.url = url;
 
@@ -28,7 +28,7 @@ public class ImageProxy implements Element,Picture{
     }
 
 
-    public Image loadImage() {
+    public book.example.models.Image loadImage() {
         if (realImage == null) {
             realImage = new Image( url);
         }
@@ -58,5 +58,10 @@ public class ImageProxy implements Element,Picture{
     @Override
     public int get(Element element) {
         return 0;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitImageProxy(this);
     }
 }

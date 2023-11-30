@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class Book extends Section implements Visitee {
     private static String titlu;
+    @Getter
+    private int id;
     private TableOfContents tableOfContents;
 
 
@@ -15,10 +17,11 @@ public class Book extends Section implements Visitee {
     @Getter
     private ArrayList<Author> authors;
 
-    public Book(String titlu)
+    public Book(String titlu, int id)
     {
         super(titlu);
         this.titlu=titlu;
+        this.id=id;
         chapters = new ArrayList<>();
         authors = new ArrayList<>();
 

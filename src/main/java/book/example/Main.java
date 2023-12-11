@@ -124,7 +124,7 @@ public class Main {
 //        p1.render(p1,context);
 //        p2.render(p2,context);
 //        p3.render(p3,context);
-        Book book = new Book("Design Patterns", 1234);
+        Book book = new Book("Design Patterns");
         new RenderContentVisitor().visitBook(book);
 //        book.accept(new RenderContentVisitor());
 

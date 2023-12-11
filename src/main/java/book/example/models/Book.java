@@ -7,21 +7,19 @@ import java.util.ArrayList;
 public class Book extends Section implements Visitee {
     private static String titlu;
     @Getter
-    private int id;
+    private long id;
     private TableOfContents tableOfContents;
-
-
 
     @Getter
     private ArrayList<Chapter> chapters;
     @Getter
     private ArrayList<Author> authors;
 
-    public Book(String titlu, int id)
+    public Book(String titlu)
     {
         super(titlu);
         this.titlu=titlu;
-        this.id=id;
+//        this.id=id;
         chapters = new ArrayList<>();
         authors = new ArrayList<>();
 
@@ -77,5 +75,9 @@ public class Book extends Section implements Visitee {
     @Override
     public void accept(Visitor visitor) {
         visitor.visitBook(this);
+    }
+
+    public void setId(long bookId) {
+        this.id=bookId;
     }
 }

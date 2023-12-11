@@ -1,4 +1,4 @@
-package com.example.spproject.controllers;
+package book.example.controllers;
 
 import com.example.spproject.difexample.ClientComponent;
 import org.springframework.beans.factory.annotation.Autowired;

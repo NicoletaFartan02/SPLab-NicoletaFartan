@@ -1,16 +1,30 @@
 package book.example.models;
 
 import book.example.services.AlignStrategy;
+import jakarta.persistence.*;
 import lombok.Getter;
-
+@Entity
 public class Paragraph implements Element,Visitee {
 
     @Getter
     private String text;
+    @Transient
     private AlignStrategy alignment;
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "sub_chapter_id")
+    private SubChapter subChapter;
 
     public Paragraph(String text) {
         this.text = text;
+    }
+
+    public Paragraph() {
+
     }
 
     public void print() {
@@ -44,5 +58,13 @@ public class Paragraph implements Element,Visitee {
     @Override
     public void accept(Visitor visitor) {
         visitor.visitParagraph(this);
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

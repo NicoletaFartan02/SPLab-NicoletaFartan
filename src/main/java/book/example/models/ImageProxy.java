@@ -1,5 +1,7 @@
 package book.example.models;
 
+import jakarta.persistence.Transient;
+
 import java.awt.*;
 
 public class ImageProxy implements Element, Picture, Visitee {

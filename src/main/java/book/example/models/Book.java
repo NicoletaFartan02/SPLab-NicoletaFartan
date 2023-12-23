@@ -1,18 +1,26 @@
 package book.example.models;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.util.ArrayList;
 
+@Entity
+@Inheritance
 public class Book extends Section implements Visitee {
     private static String titlu;
+    @Id
     @Getter
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @OneToOne
     private TableOfContents tableOfContents;
 
     @Getter
+    @OneToMany
     private ArrayList<Chapter> chapters;
     @Getter
+    @OneToMany(mappedBy = "book")
     private ArrayList<Author> authors;
 
     public Book(String titlu)
@@ -22,6 +30,11 @@ public class Book extends Section implements Visitee {
 //        this.id=id;
         chapters = new ArrayList<>();
         authors = new ArrayList<>();
+
+    }
+
+    public Book() {
+        super(titlu);
 
     }
 
@@ -79,5 +92,13 @@ public class Book extends Section implements Visitee {
 
     public void setId(long bookId) {
         this.id=bookId;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

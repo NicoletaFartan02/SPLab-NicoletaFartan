@@ -21,31 +21,36 @@ public class BookController {
     }
     @GetMapping("/")
     public List<Book> getBooks() {
-        var command = new GetBooksCommand();
-        return command.execute();
+//        var command = new GetBooksCommand();
+//        return command.execute();
+        return bookService.getAllBooks();
     }
 
     @GetMapping("/{id}")
     public Book getBookById(@PathVariable int id) {
-        System.out.println("search by id: " + id);
-        return new Book("O carte");
+//        System.out.println("search by id: " + id);
+//        return new Book("O carte");
+        return bookService.getBookById(id);
     }
 
     @PostMapping("/")
     public Book createBook(@RequestBody Book book) {
-        var command = new UpdateBookCommand(book, this.bookService);
-        return command.execute();
+//        var command = new UpdateBookCommand(book, this.bookService);
+//        return command.execute();
+        return bookService.createBook(book);
     }
 
     @PutMapping("/{id}")
     public Book updateBook(@RequestBody Book book, @PathVariable int id) {
-        System.out.println("Update by id: " + id);
-        return new Book(book.getTitle());
+//        System.out.println("Update by id: " + id);
+//        return new Book(book.getTitle());
+        return bookService.updateBook(id, book);
     }
 
     @DeleteMapping("/{id}")
     public HttpStatus deleteBook(@PathVariable int id) {
-        System.out.println("Delete by id: " + id);
+//        System.out.println("Delete by id: " + id);
+        bookService.deleteBook(id);
         return HttpStatus.OK;
     }
     

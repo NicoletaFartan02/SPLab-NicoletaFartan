@@ -15,6 +15,6 @@ public class UpdateBookCommand implements BookCommand<Book> {
     }
     @Override
     public Book execute() {
-        return this.bookService.saveBook(this.newBook);
+        return this.bookService.updateBook(this.newBook.getId(),this.newBook);
     }
 }

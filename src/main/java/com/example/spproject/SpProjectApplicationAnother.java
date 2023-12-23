@@ -1,20 +1,22 @@
 package com.example.spproject;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
+import book.example.models.Book;
+import book.example.persistence.BooksRepository;
 import com.example.spproject.difexample.ClientComponent;
 import com.example.spproject.difexample.SingletonComponent;
 import com.example.spproject.difexample.TransientComponent;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
-public class SpProjectApplication {
+
+public class SpProjectApplicationAnother {
 
     public static void main(String[] args) {
-//
+
 // Run this main function and inspect the output console
 // to learn about
 // the lifecycle of objects within
@@ -22,7 +24,7 @@ public class SpProjectApplication {
 //
 // Gets a handle of dependency injection context
         ApplicationContext context =
-                SpringApplication.run(SpProjectApplication.class, args);
+                SpringApplication.run(SpProjectApplicationAnother.class, args);
 // Gets an instance of TransientComponent from the DI context
         TransientComponent transientBean =
                 context.getBean(TransientComponent.class);
@@ -51,6 +53,9 @@ public class SpProjectApplication {
 // One can also request an instance from DI context by name
         c = (ClientComponent)context.getBean("clientComponent");
         c.operation();
+
+
+
     }
 }
 

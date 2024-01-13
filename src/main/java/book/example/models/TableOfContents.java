@@ -2,15 +2,26 @@ package book.example.models;
 
 import book.example.models.Element;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
 public class TableOfContents implements Element, Visitee {
+    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
+
+    public TableOfContents(Long id) {
+        this.id = id;
+    }
+
     @OneToOne
     @JoinColumn(name = "book_id")
     private Book book;
+
+    public TableOfContents() {
+
+    }
 
     public void print() {
         System.out.println("Table of Contents:");
@@ -40,8 +51,5 @@ public class TableOfContents implements Element, Visitee {
         this.id = id;
     }
 
-    public Long getId() {
-        return id;
-    }
 }
 

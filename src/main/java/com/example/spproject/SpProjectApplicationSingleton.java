@@ -1,19 +1,15 @@
 package com.example.spproject;
 
-import book.example.models.Book;
-import book.example.persistence.BooksRepository;
 import com.example.spproject.difexample.ClientComponent;
 import com.example.spproject.difexample.SingletonComponent;
 import com.example.spproject.difexample.TransientComponent;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 
-public class SpProjectApplicationAnother {
+public class SpProjectApplicationSingleton {
 
     public static void main(String[] args) {
 
@@ -24,7 +20,7 @@ public class SpProjectApplicationAnother {
 //
 // Gets a handle of dependency injection context
         ApplicationContext context =
-                SpringApplication.run(SpProjectApplicationAnother.class, args);
+                SpringApplication.run(SpProjectApplicationSingleton.class, args);
 // Gets an instance of TransientComponent from the DI context
         TransientComponent transientBean =
                 context.getBean(TransientComponent.class);

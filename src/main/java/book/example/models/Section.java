@@ -14,9 +14,9 @@ public class Section implements Element,Visitee {
 
     private ArrayList<Element> elements;
 
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Id
-//    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private Long id;
 
 
     public Section(String title){
@@ -24,16 +24,15 @@ public class Section implements Element,Visitee {
         elements = new ArrayList<>();
     }
 
-    public Section() {
-
-    }
+    public Section() {}
 
     @Override
     public void print() {
 
-        if (!title.equals(Book.getBookTitle())) {
-            System.out.println(title);
-        }
+//        if (!title.equals(Book.getBookTitle())) {
+//            System.out.println(title);
+//        }
+        System.out.println(title);
 
         //System.out.println(title);
         for (Element element : elements) {

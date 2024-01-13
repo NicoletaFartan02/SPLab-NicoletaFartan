@@ -10,21 +10,20 @@ import java.util.List;
 @Entity
 public class Author {
 
+    @Getter
     private String name;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
-    @OneToMany(mappedBy = "author")
-    private List<Book> books = new ArrayList<>();
+//    @OneToMany(mappedBy = "author")
+//    private List<Book> books = new ArrayList<>();
 
     public Author(String name) {
         this.name = name;
     }
 
-    public Author() {
-
-    }
+    public Author() {}
 
     public void print() {
         System.out.println("Author: " + name);
@@ -34,4 +33,7 @@ public class Author {
         this.id = id;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 }

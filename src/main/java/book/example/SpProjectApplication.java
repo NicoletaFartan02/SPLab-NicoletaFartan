@@ -1,6 +1,7 @@
 package book.example;
 
 import book.example.models.Book;
+import book.example.models.TableOfContents;
 import book.example.persistence.BooksRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,7 +21,7 @@ public class SpProjectApplication {
 //
 // Gets a handle of dependency injection context
 //        ApplicationContext context =
-//                SpringApplication.run(SpProjectApplicationAnother.class, args);
+//                SpringApplication.run(SpProjectApplicationSingleton.class, args);
 //// Gets an instance of TransientComponent from the DI context
 //        TransientComponent transientBean =
 //                context.getBean(TransientComponent.class);
@@ -52,9 +53,10 @@ public class SpProjectApplication {
 
 
         ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(SpProjectApplication.class, args);
-//        BooksRepository booksRepository1 = configurableApplicationContext.getBean(BooksRepository.class);
-//        Book book = new Book("O carte");
-//        booksRepository1.save(book);
+        BooksRepository booksRepository1 = configurableApplicationContext.getBean(BooksRepository.class);
+        TableOfContents tableOfContents = new TableOfContents(123L);
+        Book book = new Book("O carte");
+        booksRepository1.save(book);
 
     }
 }

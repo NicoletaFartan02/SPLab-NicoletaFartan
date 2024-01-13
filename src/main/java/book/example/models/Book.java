@@ -4,43 +4,57 @@ import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Inheritance
 public class Book extends Section implements Visitee {
-    private static String titlu;
-    @Id
     @Getter
+    @Column(name = "name")
+    private String name;
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private TableOfContents tableOfContents;
 
     @Getter
     @OneToMany
-    private ArrayList<Chapter> chapters;
+    private List<Chapter> chapters;
     @Getter
-    @OneToMany(mappedBy = "book")
-    private ArrayList<Author> authors;
+    @ManyToMany
+    private List<Author> authors;
 
-    public Book(String titlu)
+    public Book(String name)
     {
-        super(titlu);
-        this.titlu=titlu;
-//        this.id=id;
+        super(name);
+        this.name=name;
+        this.id=id;
         chapters = new ArrayList<>();
         authors = new ArrayList<>();
+    }
+    public Book(String name, TableOfContents tableOfContents)
+    {
+        super(name);
+        this.name=name;
+        this.id=id;
+        chapters = new ArrayList<>();
+        authors = new ArrayList<>();
+        this.tableOfContents=tableOfContents;
 
     }
 
-    public Book() {
-        super(titlu);
+    public Book() {}
 
+
+    public String getBookTitle() {
+
+        return name;
     }
 
-    public static String getBookTitle() {
-        return titlu;
-    }
+//    public String getBookTitle() {
+//        return name;
+//    }
 
     public int addChapter(Chapter chapter) {
         chapters.add(chapter);
@@ -63,7 +77,7 @@ public class Book extends Section implements Visitee {
 
 
 
-        System.out.println("Book: " + titlu);
+        System.out.println("Book: " + name);
 
 
         System.out.println("Authors:");
@@ -88,10 +102,6 @@ public class Book extends Section implements Visitee {
     @Override
     public void accept(Visitor visitor) {
         visitor.visitBook(this);
-    }
-
-    public void setId(long bookId) {
-        this.id=bookId;
     }
 
     public void setId(Long id) {

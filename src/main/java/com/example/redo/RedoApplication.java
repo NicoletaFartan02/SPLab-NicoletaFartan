@@ -21,17 +21,10 @@ public class RedoApplication {
 
     public static void main(String[] args) {
 //        SpringApplication.run(RedoApplication.class, args);
+
+
         ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(RedoApplication.class, args);
         BooksRepository booksRepository1 = configurableApplicationContext.getBean(BooksRepository.class);
-//        Author author = new Author("Ionascu");
-//        Section cap1 =  new Section("Default chapter");
-//        Section cap2 =  new Section("Default chapter2");
-//        List<Section> sections = new ArrayList<>();
-//        sections.add(cap1);
-//        sections.add(cap2);
-//
-//        List<Author> authors = new ArrayList<>();
-//        authors.add(author);
 //        Book book = new Book("O carte");
 //        booksRepository1.save(book);
     }
